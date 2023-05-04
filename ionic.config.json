@@ -1,0 +1,7 @@
+{
+  "name": "festival-banner",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

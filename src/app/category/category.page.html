@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar >
+    <ion-title>
+      <div class="header-title">
+        <span>{{imgDetails.name}}</span>
+        <span>{{imgDetails.date}}</span>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="festival-title">
+    <div class="container">
+      <div class="cards">
+        <div>
+          <div class="ion-margin-top">
+            <div class="row">
+              <ng-container *ngFor="let img of [1,2,3,4,5,6,7,8,9,10] , let i = index">
+                <div class="col-md-6 col-sm-6 col-xs-6 img-card">
+                  <div class="card-img-top" (click)="selectedImage(img)">
+                    <img class="card_img"
+                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/{{imgShow}}/{{i+1}}.jpg"
+                      alt="Card image cap" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

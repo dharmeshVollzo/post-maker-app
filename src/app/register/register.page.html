@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true">
+  <div class="main-page-bg" >
+    <div class="login-card">
+      <div class="main-card">
+        <span class="login-title">Create <p>Account.</p></span>
+        <div class="cards">
+          <!-- <div class="firstname">
+            <ion-input label="Email Address" labelPlacement="floating" maxlength="20"></ion-input>
+          </div> -->
+          <div class="username">
+            <span class="title">User Name</span>
+            <ion-input class="custom" [counter]="true"></ion-input>
+          </div>
+          <div class="password">
+            <span class="title">Email Address</span>
+            <ion-input class="custom" [counter]="true"></ion-input>
+          </div>
+          <div class="password">
+            <span class="title">Password</span>
+            <ion-input class="custom" [counter]="true"></ion-input>
+          </div>
+          <ion-buttons slot="secondary" class="sign-btn" (click)="createAccount()">
+            <ion-button fill="solid" color="primary" class="signin-text">
+              Create Account
+            </ion-button>
+          </ion-buttons>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

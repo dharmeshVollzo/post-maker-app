@@ -1,0 +1,38 @@
+.img-card {
+    padding: 0px 10px;
+    border-radius: 19px;
+    margin-bottom: 15px;
+}
+
+.card-img-top {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px
+}
+
+.card_img {
+    border-radius: 10px;
+}
+
+ion-header ion-toolbar {
+    ion-title {
+        color: #fff;
+        background: #061f6f;
+        padding: 14px 10px 14px 40px;
+    }
+}
+
+.header-title {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.toolbar-background{
+    background: black;
+}
+
+:host ::ng-deep ion-header ion-toolbar .toolbar-background {
+    background: #061f6f;
+}

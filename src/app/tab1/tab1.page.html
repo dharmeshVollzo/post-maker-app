@@ -1,0 +1,102 @@
+<ion-header [translucent]="true">
+  <div class="tab1">
+    <div class="video-block">
+      <video loop autoplay src="https://realloc-image.s3.amazonaws.com/assets/Video/Intro Video.mp4"></video>
+    </div>
+    <div class="main-card">
+      <span class="title">Festival Banner</span>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+      <div class="festival-title">
+         <span>Festival</span>
+         <div class="cards">
+           <div style="margin-top: 8px; display: flex;">
+            <ion-slides [option]="option" class="ion-margin-top">
+              <ion-slide>
+                <ng-container *ngFor="let festival of festivalNameArr , let i = index">
+                  <ion-card class="card-img-top" (click)="categoryCard(festival)">
+                    <div class="festival-date"><span class="date">{{festival.date}}</span></div>
+                    <img class="card_img"
+                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/{{festival.folderName}}/1.jpg"
+                      alt="Card image cap" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                      <span style="margin-top: 10px;">{{festival.name}}</span>
+                  </ion-card>
+                </ng-container>
+              </ion-slide>
+            </ion-slides>
+           </div>
+         </div>
+
+
+         <span>Good Morning</span>
+         <div class="cards card-height">
+           <div style="margin-top: 8px; display: flex;">
+            <ion-slides [option]="option" class="ion-margin-top">
+              <ion-slide>
+                <ng-container *ngFor="let festival of festivalNameArr , let i = index">
+                  <ion-card class="card-img-top" (click)="categoryCard(festival)" style="height: 160px;">
+                    <img class="card_img"
+                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/{{festival.folderName}}/1.jpg"
+                      alt="Card image cap" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  </ion-card>
+                </ng-container>
+              </ion-slide>
+            </ion-slides>
+           </div>
+         </div>
+
+         <span>Good Night</span>
+         <div class="cards card-height">
+           <div style="margin-top: 8px; display: flex;">
+            <ion-slides [option]="option" class="ion-margin-top">
+              <ion-slide>
+                <ng-container *ngFor="let festival of festivalNameArr , let i = index">
+                  <ion-card class="card-img-top" (click)="categoryCard(festival)" style="height: 160px;">
+                    <img class="card_img"
+                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/{{festival.folderName}}/1.jpg"
+                      alt="Card image cap" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  </ion-card>
+                </ng-container>
+              </ion-slide>
+            </ion-slides>
+           </div>
+         </div>
+
+         <span>Motivational Quotes</span>
+         <div class="cards card-height">
+           <div style="margin-top: 8px; display: flex;">
+            <ion-slides [option]="option" class="ion-margin-top">
+              <ion-slide>
+                <ng-container *ngFor="let festival of festivalNameArr , let i = index">
+                  <ion-card class="card-img-top" (click)="categoryCard(festival)" style="height: 160px;">
+                    <img class="card_img"
+                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/{{festival.folderName}}/1.jpg"
+                      alt="Card image cap" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  </ion-card>
+                </ng-container>
+              </ion-slide>
+            </ion-slides>
+           </div>
+         </div>
+         
+         <span>Birthday Wishes</span>
+         <div class="cards card-height">
+           <div style="margin-top: 8px; display: flex;">
+            <ion-slides [option]="option" class="ion-margin-top">
+              <ion-slide>
+                <ng-container *ngFor="let festival of festivalNameArr , let i = index">
+                  <ion-card class="card-img-top" (click)="categoryCard(festival)" style="height: 160px;">
+                    <img class="card_img"
+                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/{{festival.folderName}}/1.jpg"
+                      alt="Card image cap" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  </ion-card>
+                </ng-container>
+              </ion-slide>
+            </ion-slides>
+           </div>
+         </div>
+      </div>
+</ion-content>

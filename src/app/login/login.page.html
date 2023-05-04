@@ -1,0 +1,70 @@
+<ion-content [fullscreen]="true">
+  <div class="main-page-bg" *ngIf="isLoginFrontpage">
+    <div class="animation-container">
+      <div class="lightning-container">
+        <div class="lightning white"></div>
+        <div class="lightning red"></div>
+      </div>
+      <div class="boom-container">
+        <div class="shape circle big white"></div>
+        <div class="shape circle white"></div>
+        <div class="shape triangle big yellow"></div>
+        <div class="shape disc white"></div>
+        <div class="shape triangle blue"></div>
+      </div>
+      <div class="boom-container second">
+        <div class="shape circle big white"></div>
+        <div class="shape circle white"></div>
+        <div class="shape disc white"></div>
+        <div class="shape triangle blue"></div>
+      </div>
+    </div>
+    <div class="images">
+      <img src="../../assets/icon/logo.png" />
+      <div class="logo-text">
+        <span>Festival Banner</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-page-bg" *ngIf="!isLoginFrontpage">
+    <div class="login-card">
+      <div class="main-card">
+        <span class="login-title">Log <p>in Now.</p></span>
+        <div class="cards">
+          <div class="username">
+            <span class="title">Username or Email</span>
+            <ion-input class="custom" [counter]="true"></ion-input>
+          </div>
+          <div class="password">
+            <span class="title password-title">Password <p class="forgot">Forgot Password</p></span>
+            <ion-input class="custom" [counter]="true"></ion-input>
+          </div>
+          <ion-buttons slot="secondary" class="sign-btn" (click)="signIn()">
+            <ion-button fill="solid" color="primary" class="signin-text">
+              Sign In
+            </ion-button>
+          </ion-buttons>
+        </div>
+
+        <div class="not-member">
+          <span>Not a member ?, <p (click)="register()">Create Account</p></span>
+        </div>
+
+        <div class="connect">
+          <hr>&nbsp; Connect With &nbsp;<hr>
+        </div>
+        <div class="connect-with">
+          <div class="connect-google" style="margin-right: 24px">
+            <img src="../../assets/images/search.png" />
+            <span>Google</span>
+          </div>
+          <div class="connect-facebbok">
+            <img src="../../assets/images/facebook.png" />
+            <span>Facebook</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
