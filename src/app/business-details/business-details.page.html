@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <div class="tab1">
+    <span class="enter-details">Enter Your <b>Business/Personal</b> Details</span>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="main-card">
+    <form [formGroup]="businessDetailsGroup">
+      <div class="upload-file">
+         <span>Upload File</span>
+         <div class="browse-file">
+           <img width="100%" *ngIf="imageUrl" [src]="imageUrl" class="image">
+           <div class="upload-text" [ngClass]="imageUrl ? 'imageShow' : ''">
+             <ion-icon name="cloud-upload-outline" class="upload-icon"></ion-icon><br>
+             <span>Upload your logo / image</span>
+           </div>
+           <input type="file" (change)="handleFileInput($event.target)" formControlName="file" class="file-selection"/>
+         </div>
+      </div>
+     <div class="name">
+       <span>Name</span>
+       <input type="text" class="form-control" formControlName="name"/>
+     </div>
+ 
+     <div class="email">
+       <span>Email Address</span>
+       <input type="text" class="form-control" formControlName="email" />
+     </div>
+ 
+     <div class="email">
+       <span>Mobile Number 1</span>
+       <input type="text" class="form-control" formControlName="mobile1" />
+     </div>
+ 
+     <div class="email">
+       <span>Mobile Number 2</span>
+       <input type="text" class="form-control" formControlName="mobile2" />
+     </div>
+
+     <div class="email">
+      <span>Address</span>
+      <textarea type="text" class="form-control" formControlName="address"></textarea>
+    </div>
+ 
+     <div class="submit-btn">
+       <ion-button class="ion-btn" (click)="onSubmit()">Submit</ion-button>
+     </div>
+    </form>
+  </div>
+</ion-content>

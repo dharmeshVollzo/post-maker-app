@@ -13,11 +13,11 @@
           </div>
           <div class="password">
             <span class="title">Email Address</span>
-            <ion-input class="custom" [counter]="true"></ion-input>
+            <ion-input class="custom" [counter]="true" [(ngModel)]="email"></ion-input>
           </div>
           <div class="password">
             <span class="title">Password</span>
-            <ion-input class="custom" [counter]="true"></ion-input>
+            <ion-input class="custom" [counter]="true" [(ngModel)]="password"></ion-input>
           </div>
           <ion-buttons slot="secondary" class="sign-btn" (click)="createAccount()">
             <ion-button fill="solid" color="primary" class="signin-text">

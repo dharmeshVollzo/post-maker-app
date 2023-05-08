@@ -27,18 +27,18 @@
     </div>
   </div>
 
-  <div class="main-page-bg" *ngIf="!isLoginFrontpage">
+  <div class="main-page-bg" *ngIf="isLoginDisplay">
     <div class="login-card">
       <div class="main-card">
         <span class="login-title">Log <p>in Now.</p></span>
         <div class="cards">
           <div class="username">
             <span class="title">Username or Email</span>
-            <ion-input class="custom" [counter]="true"></ion-input>
+            <ion-input class="custom" [counter]="true" [(ngModel)]="email"></ion-input>
           </div>
           <div class="password">
             <span class="title password-title">Password <p class="forgot">Forgot Password</p></span>
-            <ion-input class="custom" [counter]="true"></ion-input>
+            <ion-input class="custom" [counter]="true" [(ngModel)]="password"></ion-input>
           </div>
           <ion-buttons slot="secondary" class="sign-btn" (click)="signIn()">
             <ion-button fill="solid" color="primary" class="signin-text">

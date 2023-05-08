@@ -1,10 +1,24 @@
 <ion-menu contentId="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu Content</ion-title>
+      <ion-title>Our Category</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">This is the menu content.</ion-content>
+  <ion-content class="ion-padding">
+    <div class="form">
+      <!-- <i class="fa fa-search"></i> -->
+      <input type="search" class="form-control form-input" placeholder="Search anything..." (keyup)="searchFestival()" [(ngModel)]="searchInput">
+      <!-- <span class="left-pan"><i class="fa fa-microphone"></i></span> -->
+    </div>
+    <div>
+      <ng-container *ngFor="let menu of festivalNameArr">
+        <div class="catgory-menu" (click)="categoryCard(menu)" [class.active]="menu.folderName === selectedMenu">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+          <span>{{menu.name}}</span>
+        </div>
+      </ng-container>
+    </div>
+  </ion-content>
 </ion-menu>
 <div class="ion-page" id="main-content">
   <ion-buttons slot="start">
@@ -19,13 +33,18 @@
       </ion-tab-button>
 
       <ion-tab-button tab="tab2">
-        <ion-icon aria-hidden="true" name="ellipse"></ion-icon>
-        <ion-label>Tab 2</ion-label>
+        <ion-icon name="videocam"></ion-icon>
+        <ion-label>Video</ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="tab3">
-        <ion-icon aria-hidden="true" name="square"></ion-icon>
-        <ion-label>Tab 3</ion-label>
+        <ion-icon name="create"></ion-icon>
+        <ion-label>Custom</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="tab4">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>Profile</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
 

@@ -9,7 +9,6 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content [fullscreen]="true">
   <div class="festival-title">
     <div class="container">
@@ -18,9 +17,8 @@
           <div class="card-img-top" *ngIf="imgShow" id="mainContainer">
             <img class="card_img" [src]="imgShow" alt="Card image cap" data-bs-toggle="modal" [ngStyle]="{'background-color' : borderColor}"
               data-bs-target="#staticBackdrop">
-              <!-- <img class="card_img" src="../../assets/images/photo-1535463731090-e34f4b5098c5.jpg" alt="Card image cap" data-bs-toggle="modal" [ngStyle]="{'background-color' : borderColor}"
-              data-bs-target="#staticBackdrop"> -->
-            <div class="card-footer">
+
+            <div class="card-footer" cdkDragBoundary=".card-img-top" cdkDrag>
                 <div class="mobile-number" [ngStyle]="{'background-color' : backgroundColor}">
                   <p [ngStyle]="{'color' : textColor}"><ion-icon name="call"></ion-icon> 9876543120</p>
                 </div>
@@ -35,44 +33,17 @@
   </div>
   
   <div class="festival-details">
-    <!-- <div class="mb-3 row">
-      <label for="inputPassword" class="col-sm-2 col-form-label">Mobile Number</label>
-      <div class="col-sm-10">
-        <input type="password" class="form-control" id="inputPassword">
-      </div>
-    </div>
-    <div class="mb-3 row form-detail">
-      <label for="inputPassword" class="col-sm-2 col-form-label">Address/Location</label>
-      <div class="col-sm-10">
-        <input type="password" class="form-control" id="inputPassword">
-      </div>
-    </div>
-    <div class="mb-3 row form-detail">
-      <label for="formFile" class="col-sm-2 col-form-label">Upload Your Logo</label>
-      <div class="col-sm-10">
-        <input type="file" id="formFile">
-      </div>
-    </div>
-    <div class="mb-3 row form-detail">
-      <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
-      <div class="col-sm-10">
-        <input type="password" class="form-control" id="inputPassword">
-      </div>
-    </div> -->
-
-    <div>
-      <div class="mb-3 row form-detail">
+    <div class="background-border-color">
+      <div class="mb-3 row form-detail bg-color">
         <label class="col-sm-3 col-form-label">Background Color</label>
         <div class="col-sm-9">
-          <!-- <input type="color" [(ngModel)]="backgroundColor"> -->
           <input class="colorpicker" [(colorPicker)]="backgroundColor" [style.background]="backgroundColor"/>
         </div>
       </div>
 
-      <div class="mb-3 row form-detail">
+      <div class="mb-3 row form-detail bg-color">
         <label class="col-sm-3 col-form-label">Border Color</label>
         <div class="col-sm-9">
-          <!-- <input type="color" [(ngModel)]="borderColor"> -->
           <input class="colorpicker" [(colorPicker)]="borderColor" [style.background]="borderColor"/>
         </div>
       </div>
@@ -81,7 +52,6 @@
     <div class="mb-3 row form-detail">
       <label class="col-sm-3 col-form-label">Text Color</label>
       <div class="col-sm-9">
-        <!-- <input type="color" [(ngModel)]="textColor"> -->
         <input class="colorpicker" [(colorPicker)]="textColor" [style.background]="textColor"/>
       </div>
     </div>
@@ -89,7 +59,6 @@
     <div class="mb-3 row form-detail">
       <label class="col-sm-3 col-form-label">Logo Height</label>
       <div class="col-sm-9">
-        <!-- <input type="number" name="height" max="500" class="form-control me-2"> -->
         <input type="range" name="height" max="500" class="">
       </div>
     </div>
@@ -97,7 +66,6 @@
     <div class="mb-3 row form-detail">
       <label class="col-sm-3 col-form-label">Logo width</label>
       <div class="col-sm-9">
-        <!-- <input type="number" name="height" max="500" class="form-control me-2"> -->
         <input type="range" name="height" max="500" class="">
       </div>
     </div>

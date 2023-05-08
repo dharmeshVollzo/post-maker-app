@@ -1,0 +1,117 @@
+.tab1 {
+    background-image:url('../../assets/images/photo-1535463731090-e34f4b5098c5.jpg') !important;
+    background: #02003f;
+    height: 200px;
+    background-blend-mode: overlay;
+    background-position: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // .main-card {
+    //     padding-top: 13px;
+    //     padding-left: 50px;
+
+    //     .title {
+    //         color: #fff;
+    //         font-size: 20px;
+    //         letter-spacing: 0.4px;
+    //         font-family: 'Poppins', sans-serif;
+    //         font-weight: 600;
+    //     }
+    // }
+}
+
+.enter-details {
+    font-size: 24px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 0.6px;
+
+    b {
+        font-weight: 600;
+    }
+}
+
+.title {
+    span {
+        font-size: 24px;
+        letter-spacing: 0.4px;
+        font-weight: 500;
+        font-family: 'Poppins', sans-serif;
+    }
+}
+
+.main-card {
+    // margin: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 5px;
+    padding: 0px 15px;
+}
+
+.upload-file, .name, .email {
+    padding-top: 15px;
+    span {
+        font-size: 14px;
+        letter-spacing: 0.4px;
+        font-weight: 500;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .browse-file {
+        height: 120px;
+        background-color: #f7f7f7;
+        border-radius: 5px;
+        border: 2px dotted #bbb;
+        margin-top: 10px;
+        position: relative;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.file-selection {
+    width: 100%;
+    height: 116px;
+    opacity: 0;
+}
+
+.image {
+    position: absolute;
+    top: 0;
+    height: 116px;
+}
+
+.upload-text {
+    text-align: center;
+    position: absolute;
+    span {
+        color: #848484;
+    }
+}
+
+.upload-icon {
+    font-size: 30px;
+    color: #818181;
+}
+
+.imageShow {
+    opacity: 0;
+}
+
+.submit-btn {
+    text-align: center;
+    padding: 30px;
+}
+
+.reg-img {
+    text-align: center;
+    padding-top: 20px;
+
+    img {
+        height: 100px;
+    }
+}

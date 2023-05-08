@@ -5,10 +5,10 @@
     </div>
     <div class="main-card">
       <span class="title">Festival Banner</span>
+      
     </div>
   </div>
 </ion-header>
-
 <ion-content [fullscreen]="true">
       <div class="festival-title">
          <span>Festival</span>
@@ -29,6 +29,7 @@
             </ion-slides>
            </div>
          </div>
+         <button (click)="logout()">logout</button>
 
 
          <span>Good Morning</span>
@@ -36,10 +37,10 @@
            <div style="margin-top: 8px; display: flex;">
             <ion-slides [option]="option" class="ion-margin-top">
               <ion-slide>
-                <ng-container *ngFor="let festival of festivalNameArr , let i = index">
-                  <ion-card class="card-img-top" (click)="categoryCard(festival)" style="height: 160px;">
+                <ng-container *ngFor="let data of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30] , let i = index">
+                  <ion-card class="card-img-top" (click)="morningImg('GoodMorning', 'Good Morning')" style="height: 160px;">
                     <img class="card_img"
-                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/{{festival.folderName}}/1.jpg"
+                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/GoodMorning/{{i + 1}}.jpg"
                       alt="Card image cap" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   </ion-card>
                 </ng-container>
@@ -53,10 +54,10 @@
            <div style="margin-top: 8px; display: flex;">
             <ion-slides [option]="option" class="ion-margin-top">
               <ion-slide>
-                <ng-container *ngFor="let festival of festivalNameArr , let i = index">
-                  <ion-card class="card-img-top" (click)="categoryCard(festival)" style="height: 160px;">
+                <ng-container *ngFor="let data of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33] , let i = index">
+                  <ion-card class="card-img-top" (click)="morningImg('GoodNight', 'Good Night')" style="height: 160px;">
                     <img class="card_img"
-                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/{{festival.folderName}}/1.jpg"
+                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/GoodNight/{{i + 1}}.jpg"
                       alt="Card image cap" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   </ion-card>
                 </ng-container>
@@ -65,15 +66,19 @@
            </div>
          </div>
 
+         <div class="upcoming-banner">
+
+         </div>
+
          <span>Motivational Quotes</span>
          <div class="cards card-height">
            <div style="margin-top: 8px; display: flex;">
             <ion-slides [option]="option" class="ion-margin-top">
               <ion-slide>
-                <ng-container *ngFor="let festival of festivalNameArr , let i = index">
-                  <ion-card class="card-img-top" (click)="categoryCard(festival)" style="height: 160px;">
+                <ng-container *ngFor="let festival of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28] , let i = index">
+                  <ion-card class="card-img-top" (click)="morningImg('Motivational', 'Motivational')" (click)="categoryCard(festival)" style="height: 160px;">
                     <img class="card_img"
-                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/{{festival.folderName}}/1.jpg"
+                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/Motivational/{{i + 1}}.jpg"
                       alt="Card image cap" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   </ion-card>
                 </ng-container>
@@ -82,15 +87,15 @@
            </div>
          </div>
          
-         <span>Birthday Wishes</span>
+         <span>We Are Hiring</span>
          <div class="cards card-height">
            <div style="margin-top: 8px; display: flex;">
             <ion-slides [option]="option" class="ion-margin-top">
               <ion-slide>
-                <ng-container *ngFor="let festival of festivalNameArr , let i = index">
-                  <ion-card class="card-img-top" (click)="categoryCard(festival)" style="height: 160px;">
+                <ng-container *ngFor="let festival of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26] , let i = index">
+                  <ion-card class="card-img-top" (click)="morningImg('WeAreHiring', 'We Are Hiring')" style="height: 160px;">
                     <img class="card_img"
-                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/{{festival.folderName}}/1.jpg"
+                      src="https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/WeAreHiring/{{i + 1}}.jpg"
                       alt="Card image cap" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   </ion-card>
                 </ng-container>

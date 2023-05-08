@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
+import { Location } from '@angular/common';
+import { Storage } from '@capacitor/storage';
+import { AlertController, Platform, IonRouterOutlet } from '@ionic/angular';
+import { filter, pairwise } from 'rxjs';
 
 @Component({
   selector: 'app-tab1',
@@ -293,11 +296,62 @@ export class Tab1Page {
       date: "Nov 10, 2023"
     },
   ]
+  currentUrl:any;
+  subscribe:any;
+  @ViewChild(IonRouterOutlet, {static : true}) routerOutlet! : IonRouterOutlet;
 
-  constructor(private router : Router) {}
+
+  constructor(private router: Router,
+    private platform: Platform,
+    private alertController: AlertController,
+    private routerOulet: IonRouterOutlet,
+    private route : ActivatedRoute,
+    private location : Location) {
+      this.backButton();
+  }
 
   categoryCard(festival:any){
     this.router.navigate(['/tabs/category/', festival.folderName], {queryParams: {date: festival.date, name: festival.name}})
+  }
+
+  morningImg(folderName:any, festivalName:any) {
+    this.router.navigate(['/tabs/category/'+ folderName], {queryParams: {name: festivalName}})
+  }
+
+  async logout() {
+    await Storage.remove({ key: 'authtoken' });
+    localStorage.removeItem('userData');
+    this.router.navigate(['/login'])
+  }
+
+  backButton() {
+    this.subscribe = this.platform.backButton.subscribeWithPriority(10, () => {
+      if (this.router.url === '/tabs/tab1') {
+        if (!this.routerOulet.canGoBack()) {
+          this.backButtonAlert();
+        }
+      } else {
+        this.location.back();
+      }
+     
+    })
+  }
+
+  async backButtonAlert() {
+    const alert = await this.alertController.create({
+      message: "Do you want to exit Festival Banner app",
+      buttons: [{
+        text: 'Cancel',
+        role: 'cancel'
+      }, {
+        text: 'Yes',
+        handler: () => {
+          (window.navigator as any)['app'].exitApp();
+        }
+      }
+      ]
+    })
+    await alert.present();
   }
 
 }

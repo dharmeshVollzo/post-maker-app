@@ -8,6 +8,7 @@ import { CreatePosterPageRoutingModule } from './create-poster-routing.module';
 
 import { CreatePosterPage } from './create-poster.page';
 import { ColorPickerModule } from 'ngx-color-picker';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     FormsModule,
     IonicModule,
     ColorPickerModule,
-    CreatePosterPageRoutingModule
+    DragDropModule,
+    CreatePosterPageRoutingModule,
   ],
   declarations: [CreatePosterPage]
 })

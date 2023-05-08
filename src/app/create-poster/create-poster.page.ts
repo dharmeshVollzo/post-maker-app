@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
-import { error } from 'console';
+import { ItemReorderEventDetail } from '@ionic/angular';
+import * as FileSaver from 'file-saver';
 import html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-create-poster',
@@ -17,7 +17,7 @@ export class CreatePosterPage implements OnInit {
   borderColor = '#cde2e1';
   textColor = "#000"
 
-
+  @ViewChild('mainContainer') mainContainer!: ElementRef;
   fontFamilyArr = [
     {
       name:'Poppins'
@@ -46,11 +46,11 @@ export class CreatePosterPage implements OnInit {
     this.imgDetails = this.route.snapshot.queryParams;
   }
   
-  save(fileName: any) {
-    let section: any = document.querySelector('#mainContainer');
+  async save(fileName: any) {
+    let section: any = document.getElementById('mainContainer');
     html2canvas(section).then((canvas: any) => {
       var link = document.createElement('a');
-        link.href = canvas.toDataURL();
+        link.href = canvas.toDataURL("image/jpg").replace("image/jpg", "image/octet-stream");
         link.download = fileName;
         document.body.appendChild(link);
         link.click();

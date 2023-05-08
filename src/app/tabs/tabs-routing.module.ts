@@ -28,6 +28,10 @@ const routes: Routes = [
         loadChildren: () => import('../create-poster/create-poster.module').then( m => m.CreatePosterPageModule)
       },
       {
+        path: 'business-details',
+        loadChildren: () => import('../business-details/business-details.module').then( m => m.BusinessDetailsPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
