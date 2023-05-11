@@ -5,7 +5,9 @@
     </div>
     <div class="main-card">
       <span class="title">Festival Banner</span>
-      
+      <div class="profile-img">
+        <img  [src]="userData ? userData.file : '../../assets/images/photo-1535463731090-e34f4b5098c5.jpg'" />
+      </div>
     </div>
   </div>
 </ion-header>
@@ -29,8 +31,6 @@
             </ion-slides>
            </div>
          </div>
-         <button (click)="logout()">logout</button>
-
 
          <span>Good Morning</span>
          <div class="cards card-height">

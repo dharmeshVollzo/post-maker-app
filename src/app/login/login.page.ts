@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@capacitor/storage';
 import { AuthService } from '../service/auth.service';
 import { FirebaseService } from '../service/firebase.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -34,13 +35,27 @@ export class LoginPage implements OnInit {
       const userDataId:any = localStorage.getItem('userData')
       this.setToken(JSON.parse(userDataId)?.id)
       localStorage.setItem("userData" , userDataId)
+      this.sweetAlert('success')
       this.router.navigate(['/tabs/tab1'])
-      alert('success')
     }, (error) => {
-      alert(error.error.error.message)
+      this.sweetAlert('error',error.error.error.message)
+      // alert(error.error.error.message)
     })
 
   }
+
+  sweetAlert(sweetType:any, message?:any) {
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      icon: sweetType,
+      timerProgressBar:false,
+      timer: 5000,
+      title: sweetType == 'success' ? `<h5 style="font-size: 16px; margin: 0; font-family: 'Poppins', sans-serif; text-transform: capitalize;">Signed in successfully</h5>` : `<h5 style="font-size: 16px; margin: 0; font-family: 'Poppins', sans-serif; text-transform: capitalize;">Missing Some Details</h5>`
+    })  
+  }
+ 
 
   async setToken(userToken : any ) {
     await Storage.set({

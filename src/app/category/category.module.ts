@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { IonicModule } from '@ionic/angular';
 
 import { CategoryPageRoutingModule } from './category-routing.module';
@@ -13,6 +13,7 @@ import { CategoryPage } from './category.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    MatProgressSpinnerModule,
     CategoryPageRoutingModule
   ],
   declarations: [CategoryPage],

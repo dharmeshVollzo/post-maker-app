@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { FirebaseService } from '../service/firebase.service';
 import { BusinessDetails } from '../interface/interface';
 import { Storage, getDownloadURL, ref, uploadBytesResumable } from '@angular/fire/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-business-details',
@@ -20,7 +21,8 @@ export class BusinessDetailsPage implements OnInit {
   constructor(
     public fb : FormBuilder,
     public firebaseService : FirebaseService,
-    private storage : Storage
+    private storage : Storage,
+    private router : Router
     ) { }
 
   ngOnInit() {
@@ -61,7 +63,6 @@ export class BusinessDetailsPage implements OnInit {
       },
          () => {
          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          debugger
           if(downloadURL){
             this.uploadImageURL = downloadURL
           }
@@ -88,6 +89,10 @@ export class BusinessDetailsPage implements OnInit {
     }
     
     this.firebaseService.addNewBusinessDetails(payload).then((res =>{
+      if(res) {
+        this.router.navigate(['tabs/tab1']);
+        // this.router.navigate(['tabs/create-poster/', `https://realloc-image.s3.amazonaws.com/assets/FestivalPosters/${this.imgShow}/${imgIndex}.jpg`], {queryParams: {date: this.imgDetails.date, name: this.imgDetails.name}})
+      }
     })
 
     )

@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="!isLoader">
   <div class="festival-title">
     <div class="container">
       <div class="row">
@@ -17,13 +17,18 @@
           <div class="card-img-top" *ngIf="imgShow" id="mainContainer">
             <img class="card_img" [src]="imgShow" alt="Card image cap" data-bs-toggle="modal" [ngStyle]="{'background-color' : borderColor}"
               data-bs-target="#staticBackdrop">
+     
+              <div class="setLogo" cdkDragBoundary=".card-img-top" cdkDrag *ngIf="isLogoValue">
+                <img [src]="userData ? userData.file : ''"  [ngStyle]="{'height.px' : logoHeight , 'width.px' : logoWidth}"/>
+              </div>
+              
 
             <div class="card-footer" cdkDragBoundary=".card-img-top" cdkDrag>
-                <div class="mobile-number" [ngStyle]="{'background-color' : backgroundColor}">
-                  <p [ngStyle]="{'color' : textColor}"><ion-icon name="call"></ion-icon> 9876543120</p>
+                <div class="mobile-number" [ngStyle]="{'background-color' : backgroundColor}" *ngIf="isMobileValue">
+                  <p [ngStyle]="{'color' : textColor}"><ion-icon name="call"></ion-icon> {{userData ? userData.mobile1 : ''}} | {{userData ? userData.mobile2 : ''}}</p>
                 </div>
-              <span class="footer-border" [ngStyle]="{'background-color' : backgroundColor}">
-                  <p style="margin: 0;" [ngStyle]="{'color' : textColor}"><ion-icon name="location-sharp"></ion-icon> B-6, 206 Green city near bagban circle sapara bhatha</p>
+              <span class="footer-border" [ngStyle]="{'background-color' : backgroundColor}" *ngIf="isAddressValue">
+                  <p style="margin: 0;" [ngStyle]="{'color' : textColor}"><ion-icon name="location-sharp"></ion-icon> {{userData ? userData.address : ''}}</p>
               </span>
             </div>
           </div>
@@ -34,41 +39,82 @@
   
   <div class="festival-details">
     <div class="background-border-color">
-      <div class="mb-3 row form-detail bg-color">
-        <label class="col-sm-3 col-form-label">Background Color</label>
-        <div class="col-sm-9">
+      <div class="mb-3 row bg-color">
+        <label class="col-sm-4 col-form-label">BG Color</label>
+        <div class="col-sm-4">
           <input class="colorpicker" [(colorPicker)]="backgroundColor" [style.background]="backgroundColor"/>
         </div>
       </div>
 
-      <div class="mb-3 row form-detail bg-color">
-        <label class="col-sm-3 col-form-label">Border Color</label>
-        <div class="col-sm-9">
+      <div class="mb-3 row bg-color">
+        <label class="col-sm-4 col-form-label">Border Color</label>
+        <div class="col-sm-4">
           <input class="colorpicker" [(colorPicker)]="borderColor" [style.background]="borderColor"/>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-4 col-form-label">Text Color</label>
+        <div class="col-sm-4">
+          <input class="colorpicker" [(colorPicker)]="textColor" [style.background]="textColor"/>
         </div>
       </div>
     </div>
 
-    <div class="mb-3 row form-detail">
-      <label class="col-sm-3 col-form-label">Text Color</label>
-      <div class="col-sm-9">
-        <input class="colorpicker" [(colorPicker)]="textColor" [style.background]="textColor"/>
+   
+
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="mb-3 row form-detail">
+          <label class="col-sm-3 col-form-label">Logo Height</label>
+          <div class="col-sm-9">
+            <input type="range" name="height" max="500" class="" [(ngModel)]="logoHeight">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="mb-3 row form-detail">
+          <label class="col-sm-3 col-form-label">Logo width</label>
+          <div class="col-sm-9">
+            <input type="range" name="height" max="500" class="" [(ngModel)]="logoWidth">
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="mb-3 row form-detail">
-      <label class="col-sm-3 col-form-label">Logo Height</label>
-      <div class="col-sm-9">
-        <input type="range" name="height" max="500" class="">
+    <div class="row main-box">
+      <div class="col-sm-12 col-xs-12 call-card">
+        <div class="icon-text">
+          <ion-icon name="logo-firefox"></ion-icon>
+          <span>Logo</span>
+        </div>
+        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true" (ionChange)="toggleChange($event,'logo')"></ion-toggle>
       </div>
-    </div>
 
-    <div class="mb-3 row form-detail">
-      <label class="col-sm-3 col-form-label">Logo width</label>
-      <div class="col-sm-9">
-        <input type="range" name="height" max="500" class="">
+      <div class="col-sm-12 col-xs-12 call-card">
+        <div class="icon-text">
+          <ion-icon name="call"></ion-icon>
+          <span>Mobile</span>
+        </div>
+        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true" (ionChange)="toggleChange($event,'mobile')"></ion-toggle>
       </div>
-    </div>
+
+      <div class="col-sm-12 col-xs-12 call-card">
+        <div class="icon-text">
+          <ion-icon name="location"></ion-icon>
+          <span>Address</span>
+        </div>
+        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true" (ionChange)="toggleChange($event,'address')"></ion-toggle>
+      </div>
+
+      <div class="col-sm-12 col-xs-12 call-card">
+        <div class="icon-text">
+          <ion-icon name="mail"></ion-icon>
+          <span>Email</span>
+        </div>
+        <ion-toggle aria-label="Primary toggle" color="primary" [checked]="true" (ionChange)="toggleChange($event,'email')"></ion-toggle>
+      </div>
+   </div>
 
     <div class="ionic-btn">
       <ion-buttons slot="secondary" class="sign-btn"  (click)="save('data')">
@@ -79,3 +125,7 @@
     </div>
   </div>
 </ion-content>
+
+<div class="loader" *ngIf="isLoader">
+  <img src="../../assets/icon/loader1.gif" />
+</div>

@@ -81,10 +81,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 30px;
 
      p {
       font-weight: 300;
-      margin-left: 10px;
+      margin-left: 10px !important;
+      margin: 0;
      }
   }
 
@@ -126,6 +128,13 @@
   }
 }
 
+.sign-successfully {
+    font-size: 16px;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    text-transform: capitalize;
+}
+
 .not-member {
   span {
     color: #fff;
@@ -136,7 +145,8 @@
     p {
       color: #3880ff;
       text-decoration: underline;
-      margin-left: 8px; 
+      margin-left: 8px !important;
+      margin: 0; 
     }
   }
 }
@@ -160,10 +170,15 @@ ion-input.custom .counter {
 ion-input {
   border-bottom: 1px solid #8b8b8b;
   color: #a1a1a1;
+
+  label {
+    margin: 0;
+  }
 }
 
 ::ng-deep ion-input.custom .input-wrapper {
   padding: 0;
+  margin: 0;
 }
 
 .forgot {

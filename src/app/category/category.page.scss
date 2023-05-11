@@ -37,6 +37,16 @@ ion-header ion-toolbar {
     background: #061f6f;
 }
 
+.loader {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+
+    img {
+        z-index: 1;
+    }
+}
 
 .business-detail {
     padding: 40px;

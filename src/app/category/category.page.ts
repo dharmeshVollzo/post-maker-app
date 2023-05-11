@@ -10,7 +10,8 @@ import { FirebaseService } from '../service/firebase.service';
 export class CategoryPage implements OnInit {
   imgShow:any;
   imgDetails:any;
-  userData : any
+  userData : any;
+  isLoader = true;
   constructor(private router : Router, private route : ActivatedRoute, public firebaseService : FirebaseService) { }
 
   ngOnInit() {
@@ -37,6 +38,7 @@ export class CategoryPage implements OnInit {
       const userData : any  = localStorage.getItem('userData')
      if (userData) {
       this.userData = res.find((id : any ) => id.userId === JSON.parse(userData).id);
+      this.isLoader = false;
      }
    }))
   }

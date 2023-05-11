@@ -46,7 +46,7 @@
     background-color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     margin: 0 auto;
-    width: 40%;
+    width: max-content;
     border-radius: 8px 8px 0 0;
     padding: 3px;
 }
@@ -56,7 +56,7 @@
     justify-content: space-between;
 
     .bg-color {
-        width: 50%;
+        width: 34%;
     }
 }
 
@@ -99,7 +99,7 @@
 }
 
 .ionic-btn {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
 }
@@ -132,4 +132,62 @@ ion-header ion-toolbar {
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
     font-weight: 600;
+}
+
+.setLogo {
+    position: absolute;
+    top: 5%;
+    left: 7%;
+
+    img {
+        height: 70px;
+    }
+}
+
+.onOffData {
+    margin: 20px 0px;
+    padding: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 5px;
+}
+
+.call-card {
+    padding: 10px;
+    border-radius: 5px;
+    color: #061f6f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    ion-icon {
+        font-size: 20px;
+        color: #565656;
+    }
+
+    span {
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.4px;
+        font-weight: 500;
+        margin-left: 10px;
+        color: #000;
+    }
+
+    .icon-text {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.main-box {
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    margin: 0px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.loader {
+    display: flex;
+    height: 100vh;
+    align-items: center;
 }

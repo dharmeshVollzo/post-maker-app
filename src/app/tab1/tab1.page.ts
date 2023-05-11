@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Storage } from '@capacitor/storage';
 import { AlertController, Platform, IonRouterOutlet } from '@ionic/angular';
 import { filter, pairwise } from 'rxjs';
+import { FirebaseService } from '../service/firebase.service';
 
 @Component({
   selector: 'app-tab1',
@@ -298,6 +299,7 @@ export class Tab1Page {
   ]
   currentUrl:any;
   subscribe:any;
+  userData:any;
   @ViewChild(IonRouterOutlet, {static : true}) routerOutlet! : IonRouterOutlet;
 
 
@@ -306,8 +308,19 @@ export class Tab1Page {
     private alertController: AlertController,
     private routerOulet: IonRouterOutlet,
     private route : ActivatedRoute,
+    private firebaseService : FirebaseService,
     private location : Location) {
+      this.getBusinessDetails();
       this.backButton();
+  }
+
+  getBusinessDetails() {
+    this.firebaseService.getAllBusinessDetails().subscribe((res => {
+      const userData : any  = localStorage.getItem('userData')
+     if (userData) {
+      this.userData = res.find((id : any ) => id.userId === JSON.parse(userData).id);
+     }
+   }))
   }
 
   categoryCard(festival:any){

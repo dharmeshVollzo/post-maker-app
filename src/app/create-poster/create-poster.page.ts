@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ItemReorderEventDetail } from '@ionic/angular';
 import * as FileSaver from 'file-saver';
 import html2canvas from 'html2canvas';
+import { FirebaseService } from '../service/firebase.service';
 
 
 @Component({
@@ -15,7 +16,15 @@ export class CreatePosterPage implements OnInit {
   imgDetails:any;
   backgroundColor='#fff';
   borderColor = '#cde2e1';
-  textColor = "#000"
+  textColor = "#000";
+  userData:any;
+  logoHeight = 50;
+  logoWidth = 50;
+  isMobileValue:any = true;
+  isAddressValue:any = true;
+  isEmailValue:any = true;
+  isLogoValue:any = true;
+  isLoader = true;
 
   @ViewChild('mainContainer') mainContainer!: ElementRef;
   fontFamilyArr = [
@@ -39,11 +48,23 @@ export class CreatePosterPage implements OnInit {
     }
   ]
 
-  constructor(private route : ActivatedRoute) { }
+  constructor(private route : ActivatedRoute, private firebaseService : FirebaseService) { }
 
   ngOnInit() {
+    this.getBusinessDetails();
     this.imgShow = this.route.snapshot.params['id']
     this.imgDetails = this.route.snapshot.queryParams;
+  }
+
+
+  getBusinessDetails() {
+    this.firebaseService.getAllBusinessDetails().subscribe((res => {
+      const userData : any  = localStorage.getItem('userData')
+     if (userData) {
+      this.userData = res.find((id : any ) => id.userId === JSON.parse(userData).id);
+      this.isLoader = false;
+     }
+   }))
   }
   
   async save(fileName: any) {
@@ -55,5 +76,24 @@ export class CreatePosterPage implements OnInit {
         document.body.appendChild(link);
         link.click();
     });
+  }
+
+  toggleChange(event:any, value:any){
+    switch (value) {
+      case 'mobile':
+         this.isMobileValue = event.target.checked
+        break;
+      case 'address':
+         this.isAddressValue = event.target.checked
+        break;
+      case 'email':
+         this.isEmailValue = event.target.checked
+        break;
+      case 'logo':
+         this.isLogoValue = event.target.checked
+        break;
+      default:
+        break;
+    }
   }
 }

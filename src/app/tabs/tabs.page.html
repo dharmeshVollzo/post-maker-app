@@ -4,14 +4,13 @@
       <ion-title>Our Category</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div class="form category">
+    <ion-icon name="search" class="search"></ion-icon>
+    <input type="search" class="form-control form-input" placeholder="Search anything..." [(ngModel)]="searchInput">
+  </div>
   <ion-content class="ion-padding">
-    <div class="form">
-      <!-- <i class="fa fa-search"></i> -->
-      <input type="search" class="form-control form-input" placeholder="Search anything..." (keyup)="searchFestival()" [(ngModel)]="searchInput">
-      <!-- <span class="left-pan"><i class="fa fa-microphone"></i></span> -->
-    </div>
     <div>
-      <ng-container *ngFor="let menu of festivalNameArr">
+      <ng-container *ngFor="let menu of filteredFestivalList">
         <div class="catgory-menu" (click)="categoryCard(menu)" [class.active]="menu.folderName === selectedMenu">
           <ion-icon name="ellipsis-vertical"></ion-icon>
           <span>{{menu.name}}</span>
@@ -27,7 +26,6 @@
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="tab1">
-        <!-- <ion-icon aria-hidden="true" name="triangle"></ion-icon> -->
         <ion-icon name="home"></ion-icon>
         <ion-label>Home</ion-label>
       </ion-tab-button>

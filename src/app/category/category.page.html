@@ -9,11 +9,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="!isLoader">
   <div class="business-detail" *ngIf="!userData">
     <span><b>Grow</b> Your Business With <b>Festival Banner</b></span>
     <ion-button class="ion-btn" (click)="businessDetail()">Enter Your Business Details</ion-button>
   </div>
+
   <div class="festival-title">
     <div class="container">
       <div class="cards">
@@ -36,3 +37,7 @@
     </div>
   </div>
 </ion-content>
+
+<div class="loader" *ngIf="isLoader">
+  <img src="../../assets/icon/loader1.gif" />
+</div>

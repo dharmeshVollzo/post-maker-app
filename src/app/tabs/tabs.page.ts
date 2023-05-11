@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss']
 })
-export class TabsPage {
+export class TabsPage implements OnInit{
 
   festivalNameArr: any = [
     {
@@ -287,11 +288,15 @@ export class TabsPage {
     },
   ];
   selectedMenu:any;
-  searchInput:any;
-  searchText:any;
+  // searchInput:any;
+  searchInput:string = '';
 
   constructor(private router: Router) {
-    this.searchText = this.festivalNameArr
+    // this.searchText = this.festivalNameArr
+  }
+
+  ngOnInit(): void {
+      
   }
 
   categoryCard(festival:any){
@@ -305,8 +310,17 @@ export class TabsPage {
       item.name.toLowerCase().indexOf(this.searchInput.toLowerCase()) !== -1
     )
     } else {
-      this.festivalNameArr = this.searchText
+      this.festivalNameArr = this.searchInput
     }
+  }
+
+  get filteredFestivalList() {
+    return this.festivalNameArr.filter((id:any) => {
+      const name = id.name.toLowerCase();
+      const folderName = id.folderName.toLowerCase();
+      const query = this.searchInput.toLowerCase();
+      return name.includes(query) || folderName.includes(query);
+    });
   }
 
 }

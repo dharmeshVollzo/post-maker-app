@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FirebaseService } from '../service/firebase.service';
 
 @Component({
   selector: 'app-tab2',
@@ -292,11 +293,20 @@ export class Tab2Page implements OnInit {
        date: "Nov 10, 2023"
      },
    ]
-
-  constructor(private router : Router) {}
+  userData:any;
+  constructor(private router : Router, private firebaseService: FirebaseService) {}
 
   ngOnInit(): void {
+   this.getBusinessDetails();
+  }
 
+  getBusinessDetails() {
+    this.firebaseService.getAllBusinessDetails().subscribe((res => {
+      const userData : any  = localStorage.getItem('userData')
+     if (userData) {
+      this.userData = res.find((id : any ) => id.userId === JSON.parse(userData).id);
+     }
+   }))
   }
 
   categoryCard(festival:any){

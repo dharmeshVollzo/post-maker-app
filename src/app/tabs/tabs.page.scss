@@ -30,6 +30,20 @@ ion-title {
     }
 }
 
+.form {
+    position: relative;
+    .search {
+        position: absolute;
+        top: 8px;
+        right: 3%;
+        font-size: 18px;
+    }
+}
+
+.category {
+    margin: 20px 20px 0px 20px;
+}
+
 .active {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 5px;
@@ -37,4 +51,8 @@ ion-title {
     border-left: 3px solid #061f6f;
     transition: all 0.4s ease-in-out;
     background-color: #e5ecff;
+}
+
+::ng-deep ion-content .inner-scroll {
+    padding: 0;
 }
