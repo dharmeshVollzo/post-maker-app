@@ -1,9 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ItemReorderEventDetail } from '@ionic/angular';
-import * as FileSaver from 'file-saver';
-import html2canvas from 'html2canvas';
 import { FirebaseService } from '../service/firebase.service';
+import * as htmlToImage from 'html-to-image';
+import { Filesystem ,Directory } from '@capacitor/filesystem';
 
 
 @Component({
@@ -67,14 +66,37 @@ export class CreatePosterPage implements OnInit {
    }))
   }
   
-  async save(fileName: any) {
+  save(fileName: any) {
     let section: any = document.getElementById('mainContainer');
-    html2canvas(section).then((canvas: any) => {
-      var link = document.createElement('a');
-        link.href = canvas.toDataURL("image/jpg").replace("image/jpg", "image/octet-stream");
-        link.download = fileName;
-        document.body.appendChild(link);
+    // html2canvas(section).then((canvas: any) => {
+    //   var link = document.createElement('a');
+    //   link.href = canvas.toDataURL();
+    //     link.download = fileName;
+    //     document.body.appendChild(link);
+    //     link.click();
+    // });
+
+
+    let ref: any = this
+    htmlToImage.toJpeg(section, { quality: 0.95 }).then((dataUrl) => {
+      document.styleSheets[section]?.cssRules
+      debugger
+      if (ref.platform.is("android") || ref.platform.is("ios")) {
+          Filesystem.writeFile({
+            path: fileName,
+            data: dataUrl,
+            directory: Directory.Documents
+          }).then((res: any) => {
+          alert('File Saved')
+        }, (error: any) => {
+          alert('File faild')
+        })
+      } else {
+        var link = document.createElement('a');
+        link.download = 'my-image-name.jpeg';
+        link.href = dataUrl;
         link.click();
+      }
     });
   }
 

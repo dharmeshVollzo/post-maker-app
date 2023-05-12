@@ -14,12 +14,13 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 img-card">
-          <div class="card-img-top" *ngIf="imgShow" id="mainContainer">
+          <div class="card-img-top" *ngIf="imgShow" id="mainContainer" >
             <img class="card_img" [src]="imgShow" alt="Card image cap" data-bs-toggle="modal" [ngStyle]="{'background-color' : borderColor}"
               data-bs-target="#staticBackdrop">
      
               <div class="setLogo" cdkDragBoundary=".card-img-top" cdkDrag *ngIf="isLogoValue">
-                <img [src]="userData ? userData.file : ''"  [ngStyle]="{'height.px' : logoHeight , 'width.px' : logoWidth}"/>
+                <!-- <img [src]="userData ? userData.file : ''"  [ngStyle]="{'height.px' : logoHeight , 'width.px' : logoWidth}"/> -->
+                <ion-img [src]="userData ? userData.file : ''"  [ngStyle]="{'height.px' : logoHeight , 'width.px' : logoWidth}"></ion-img>
               </div>
               
 
